@@ -250,6 +250,13 @@ h1, h2, h3, h4, h5, h6 {
   background-attachment: fixed !important;
 }
 
+/* iOS Safari does not support background-attachment:fixed — override it */
+@supports (-webkit-overflow-scrolling: touch) {
+  .bg-scroll {
+    background-attachment: scroll !important;
+  }
+}
+
 /*------------------------------------------*/
 /*  Background Colors for Sections
 /*------------------------------------------*/
@@ -914,38 +921,6 @@ span.id-color {
 .white-color .pink-color,
 .pink-color span { color: #ff005a; }
 
-
-
-
-/* ==========================================================================
-  03. PRELOAD SPINNER
-  =========================================================================== */
-
-#loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background-color: #fff;
-}
-
-#loader {
-  width: 256px;
-  height: 38px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -128px;
-  margin-top: -19px;
-}
-
-.loader-inner {
-  width: 256px;
-  height: 38px;
-  background: url(../images/loader.gif) center center no-repeat;  
-}
 
 
 
@@ -3228,7 +3203,9 @@ td.text-right {
   =========================================================================== */
 
 #statistic-1 {
-  background-image: url(../images/statistic.jpg);
+  background-image: none;
+  background: -webkit-linear-gradient(315deg, #4a2c8f 0%, #7b4fd4 40%, #29b6f6 100%);
+  background: linear-gradient(135deg, #4a2c8f 0%, #7b4fd4 40%, #29b6f6 100%);
   padding-top: 80px;
   padding-bottom: 40px;
 }
