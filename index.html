@@ -122,7 +122,7 @@
         					<ul class="wsmenu-list">
 
         						<!-- ABOUT US -->
-        						<li class="nl-simple"><a href="#">About Us</a></li>
+        						<li class="nl-simple"><a href="about-us.html">About Us</a></li>
 
         						<!-- SERVICES -->
         						<li class="nl-simple"><a href="#">Services</a></li>
@@ -804,7 +804,7 @@
 										<!-- TAB-1 IMAGE -->
 										<div class="col-lg-6">
 											<div class="tab-img">
-												<img class="img-fluid" src="images/speechtherapy.jpg" alt="tab-image" />
+												<img class="img-fluid" src="images/speech-therapy.jpg" alt="tab-image" />
 											</div>
 										</div>
 
@@ -2134,7 +2134,7 @@
 
 								<!-- Links -->
 								<ul class="footer-links">
-									<li><a href="#"><i class="fas fa-angle-right mr-1"></i> About Us</a></li>
+									<li><a href="about-us.html"><i class="fas fa-angle-right mr-1"></i> About Us</a></li>
 									<li><a href="#"><i class="fas fa-angle-right mr-1"></i> Our Services</a></li>
 									<li><a href="#"><i class="fas fa-angle-right mr-1"></i> Book Appointment</a></li>
 									<li><a href="#"><i class="fas fa-angle-right mr-1"></i> Contact Us</a></li>
@@ -2333,6 +2333,13 @@
 
 		<script> 
 			new WOW().init();
+		</script>
+
+		<script>
+			// Remove .html from URL in address bar
+			if (window.location.pathname.endsWith('.html')) {
+				window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
+			}
 		</script>
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
