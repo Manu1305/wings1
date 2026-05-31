@@ -1224,7 +1224,7 @@ video {
     top: 0;
     left: 0;
     z-index: 10002;
-    height: 54px;
+    height: 64px;
     background: linear-gradient(to right, #1a78bf, #1ecbd7);
     text-align: center;
     -webkit-transition: all 0.25s ease-in-out;
@@ -1246,8 +1246,13 @@ video {
   }
 
   .wsmobileheader .smllogo {
-    display: inline-block;
-    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0;
+    height: 64px;
+    vertical-align: top;
+    position: relative;
+    top: -6px;
   }
 
   /* Mobile Search Bar*/

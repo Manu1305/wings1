@@ -86,7 +86,15 @@
 				<!-- MOBILE HEADER -->
 			    <div class="wsmobileheader clearfix">
 			    	<a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
-			    	<span class="smllogo"><img src="images/image.png" style="height:50px;width:auto;" alt="mobile-logo"/></span>
+			    	<span class="smllogo">
+			    		<a href="#hero-3" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+			    			<img src="images/image.png" style="height:44px;width:44px;object-fit:contain;border-radius:50%;border:2px solid rgba(255,255,255,0.65);background:#fff;padding:2px;flex-shrink:0;" alt="Wings and Wonders">
+			    			<div style="line-height:1.2;">
+			    				<div style="color:#fff;font-weight:700;font-size:13px;white-space:nowrap;letter-spacing:0.4px;">WINGS &amp; WONDERS</div>
+			    				<div style="color:rgba(255,255,255,0.82);font-size:9.5px;white-space:nowrap;font-weight:400;">Child Development Centre</div>
+			    			</div>
+			    		</a>
+			    	</span>
 			    	<a href="tel:123456789" class="callusbtn"><i class="fas fa-phone"></i></a>
 			 	</div>
 
@@ -123,7 +131,7 @@
         						<li class="nl-simple"><a href="#">Contact Us</a></li>
 
         						<!-- APPOINTMENT BUTTON -->
-        						<li class="nl-simple header-btn"><a href="#">Make an Appointment</a></li>
+        						<li class="nl-simple header-btn"><a href="#" onclick="openApptModal(event)">Make an Appointment</a></li>
 
         					</ul>
         				</nav>	<!-- END MAIN MENU -->
@@ -2051,7 +2059,92 @@
 		</div>	<!-- END PAGE CONTENT -->
 
 
+		<!-- APPOINTMENT MODAL
+		============================================= -->
+		<div id="apptModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:rgba(10,30,60,0.72);align-items:flex-start;justify-content:center;overflow-y:auto;padding:16px 0;box-sizing:border-box;">
+			<div style="background:#fff;border-radius:18px;max-width:520px;width:94%;margin:auto;padding:0;box-shadow:0 24px 64px rgba(0,0,0,0.28);overflow:hidden;position:relative;animation:apptFadeIn 0.3s ease;">
 
+				<!-- MODAL HEADER -->
+				<div style="background:linear-gradient(135deg,#1a78bf,#1ecbd7);padding:28px 32px 22px;">
+					<button id="closeApptModal" style="position:absolute;top:14px;right:18px;background:rgba(255,255,255,0.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;line-height:32px;cursor:pointer;">&times;</button>
+					<div style="display:flex;align-items:center;gap:12px;">
+						<img src="images/image.png" style="height:48px;width:48px;border-radius:50%;background:#fff;padding:4px;object-fit:contain;border:2px solid rgba(255,255,255,0.6);" alt="logo">
+						<div>
+							<h4 style="color:#fff;margin:0;font-size:20px;font-weight:700;">Book an Appointment</h4>
+							<p style="color:rgba(255,255,255,0.85);margin:3px 0 0;font-size:13px;">Wings &amp; Wonders Child Development Centre</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- MODAL BODY -->
+				<form id="apptForm" style="padding:28px 32px 32px;">
+					<div class="appt-grid">
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Parent / Guardian Name <span style="color:#e74c3c;">*</span></label>
+							<input type="text" name="parentName" required placeholder="Your name" style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'">
+						</div>
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Child's Name <span style="color:#e74c3c;">*</span></label>
+							<input type="text" name="childName" required placeholder="Child's name" style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'">
+						</div>
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Phone Number <span style="color:#e74c3c;">*</span></label>
+							<input type="tel" name="phone" required placeholder="+91 00000 00000" style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'">
+						</div>
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Email Address</label>
+							<input type="email" name="email" placeholder="you@example.com" style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'">
+						</div>
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Preferred Date <span style="color:#e74c3c;">*</span></label>
+							<input type="date" name="date" required style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'">
+						</div>
+						<div>
+							<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Service Needed</label>
+							<select name="service" style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;background:#fff;color:#555;">
+								<option value="">Select a service</option>
+								<option>Speech Therapy</option>
+								<option>Occupational Therapy</option>
+								<option>Behavioural Therapy</option>
+								<option>Special Education</option>
+								<option>Assessment / Consultation</option>
+								<option>Other</option>
+							</select>
+						</div>
+					</div>
+					<div style="margin-top:16px;">
+						<label style="font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.5px;">Message / Additional Info</label>
+						<textarea name="message" rows="3" placeholder="Any specific concerns or questions..." style="width:100%;margin-top:6px;padding:10px 13px;border:1.5px solid #dde3ed;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;resize:vertical;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a78bf'" onblur="this.style.borderColor='#dde3ed'"></textarea>
+					</div>
+					<button type="submit" style="margin-top:20px;width:100%;padding:13px;background:linear-gradient(135deg,#1a78bf,#1ecbd7);color:#fff;font-size:15px;font-weight:600;border:none;border-radius:9px;cursor:pointer;letter-spacing:0.4px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">&#128197; Confirm Appointment</button>
+					<div id="apptSuccess" style="display:none;margin-top:14px;padding:12px 16px;background:#e8f8f1;border:1.5px solid #27ae60;border-radius:8px;color:#1e8449;font-size:14px;text-align:center;">&#10003; Thank you! We'll contact you shortly to confirm your appointment.</div>
+				</form>
+			</div>
+		</div>
+
+		<style>
+			@keyframes apptFadeIn {
+				from { opacity: 0; transform: translateY(-16px) scale(0.97); }
+				to   { opacity: 1; transform: translateY(0) scale(1); }
+			}
+			#apptModal {
+				-webkit-overflow-scrolling: touch;
+			}
+			#apptForm .appt-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 16px;
+			}
+			@media (max-width: 540px) {
+				#apptModal { padding: 0 !important; align-items: flex-start !important; }
+				#apptModal > div { border-radius: 0 0 18px 18px !important; width: 100% !important; margin: 0 !important; }
+				#apptModal > div > div:first-child { padding: 18px 16px 16px !important; }
+				#apptModal > div > div:first-child h4 { font-size: 17px !important; }
+				#apptModal > div > div:first-child p { font-size: 12px !important; }
+				#apptForm { padding: 18px 16px 24px !important; }
+				#apptForm .appt-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+			}
+		</style>
 
 		<!-- EXTERNAL SCRIPTS
 		============================================= -->	
@@ -2077,6 +2170,38 @@
 		<script src="js/jquery.validate.min.js"></script>	
 		<script src="js/jquery.ajaxchimp.min.js"></script>
 		<script src="js/wow.js"></script>	
+
+		<!-- APPOINTMENT MODAL SCRIPT -->
+		<script>
+			function openApptModal(e) {
+				if (e) { e.preventDefault(); e.stopPropagation(); }
+				var modal = document.getElementById('apptModal');
+				if (modal) { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+				return false;
+			}
+			function closeApptModal() {
+				var modal = document.getElementById('apptModal');
+				var form  = document.getElementById('apptForm');
+				var succ  = document.getElementById('apptSuccess');
+				if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+				if (succ)  succ.style.display = 'none';
+				if (form)  { form.reset(); var btn = form.querySelector('button[type=submit]'); if (btn) btn.style.display = ''; }
+			}
+			document.addEventListener('DOMContentLoaded', function(){
+				var closeBtn = document.getElementById('closeApptModal');
+				var modal    = document.getElementById('apptModal');
+				var form     = document.getElementById('apptForm');
+				var success  = document.getElementById('apptSuccess');
+				if (closeBtn) closeBtn.addEventListener('click', closeApptModal);
+				if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeApptModal(); });
+				if (form) form.addEventListener('submit', function(e){
+					e.preventDefault();
+					if (success) success.style.display = 'block';
+					var btn = form.querySelector('button[type=submit]'); if (btn) btn.style.display = 'none';
+					setTimeout(closeApptModal, 3000);
+				});
+			});
+		</script>
 	
 		<!-- Custom Script -->		
 		<script src="js/custom.js"></script>
@@ -2104,6 +2229,38 @@
 
 		<script src="js/changer.js"></script>
 		<script defer src="js/styleswitch.js"></script>	
+
+		<!-- APPOINTMENT MODAL SCRIPT -->
+		<script>
+			function openApptModal(e) {
+				if (e) { e.preventDefault(); e.stopPropagation(); }
+				var modal = document.getElementById('apptModal');
+				if (modal) { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+				return false;
+			}
+			function closeApptModal() {
+				var modal = document.getElementById('apptModal');
+				var form  = document.getElementById('apptForm');
+				var succ  = document.getElementById('apptSuccess');
+				if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+				if (succ)  succ.style.display = 'none';
+				if (form)  { form.reset(); var btn = form.querySelector('button[type=submit]'); if(btn) btn.style.display=''; }
+			}
+			document.addEventListener('DOMContentLoaded', function(){
+				var closeBtn = document.getElementById('closeApptModal');
+				var modal    = document.getElementById('apptModal');
+				var form     = document.getElementById('apptForm');
+				var success  = document.getElementById('apptSuccess');
+				if (closeBtn) closeBtn.addEventListener('click', closeApptModal);
+				if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeApptModal(); });
+				if (form) form.addEventListener('submit', function(e){
+					e.preventDefault();
+					if(success) success.style.display = 'block';
+					var btn = form.querySelector('button[type=submit]'); if(btn) btn.style.display = 'none';
+					setTimeout(closeApptModal, 3000);
+				});
+			});
+		</script>
 
 		<!-- WHATSAPP FLOATING BUTTON -->
 		<a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
