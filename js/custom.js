@@ -96,40 +96,33 @@
 				$(scrollId+"-active").css({ 'position': 'absolute', 'top': o.topDistance+'px', 'width': '100%', 'border-top': '1px dotted '+o.activeOverlay, 'z-index': '2147483647' });
 			}
 
-			// Show while scrolling, hide 1.5s after scrolling stops
-			var scrollHideTimer = null;
-
+			// Show when scrolled past threshold, hide when back near top
 			function onScrolling() {
 				var scrolled = window.pageYOffset
 					|| document.documentElement.scrollTop
 					|| document.body.scrollTop
 					|| 0;
 
-				// Only show if scrolled past the top distance
 				if (scrolled > o.topDistance) {
 					$(scrollId).stop(true, true).fadeIn(o.animationInSpeed);
-				}
-
-				// Clear any existing hide timer and start a new one
-				clearTimeout(scrollHideTimer);
-				scrollHideTimer = setTimeout(function() {
+				} else {
 					$(scrollId).stop(true, true).fadeOut(o.animationOutSpeed);
-				}, 1500);
+				}
 			}
 
 			window.addEventListener('scroll', onScrolling, {passive: true});
 			document.addEventListener('touchmove', onScrolling, {passive: true});
 			document.addEventListener('touchend', onScrolling, {passive: true});
 
-			// To the top
+			// Check on page load in case page is already scrolled
+			onScrolling();
+
+			// To the top — use jQuery animate for reliable cross-browser/iOS support
 			$(scrollId).on('click touchstart', function(event){
 				event.preventDefault();
 				event.stopPropagation();
-				if ('scrollBehavior' in document.documentElement.style) {
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-				} else {
-					$('html, body').animate({scrollTop: 0}, o.topSpeed);
-				}
+				$('html, body').animate({scrollTop: 0}, o.topSpeed);
+				return false;
 			});
 
 		};

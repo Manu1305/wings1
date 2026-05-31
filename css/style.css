@@ -3352,6 +3352,12 @@ td.text-right {
   transform: scale(1.08);
 }
 
+@media (max-width: 991px) {
+  #doctors-1 .doctor-1:hover .hover-overlay img {
+    transform: scale(1);
+  }
+}
+
 .doctor-2 {
   text-align: center;
   background-color: #fff;

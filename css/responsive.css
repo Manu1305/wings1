@@ -1448,7 +1448,7 @@
   #terms-page p.p-notice { font-size: 0.85rem; }
 
   /* Scroll To Top */
-  #scrollUp { width: 44px; height: 44px; bottom: 15px; right: 15px; }
+  #scrollUp { width: 44px; height: 44px; bottom: calc(15px + env(safe-area-inset-bottom, 0px)); right: 15px; }
 
 
 
@@ -1957,7 +1957,7 @@
   #terms-page p.p-notice { font-size: 1.05rem; }
 
   /* Scroll To Top */
-  #scrollUp { width: 44px; height: 44px; bottom: 15px; right: 15px; }
+  #scrollUp { width: 44px; height: 44px; bottom: calc(15px + env(safe-area-inset-bottom, 0px)); right: 15px; }
 
 
 
