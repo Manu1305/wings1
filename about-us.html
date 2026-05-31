@@ -1078,11 +1078,9 @@
 						var formData = new FormData(form);
 						var bodyParts = [];
 						formData.forEach(function (val, key) { bodyParts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val)); });
-						fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec?t=' + Date.now(), {
-							method: 'POST',
-							mode: 'no-cors',
-							headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-							body: bodyParts.join('&')
+						fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec?' + bodyParts.join('&') + '&t=' + Date.now(), {
+							method: 'GET',
+							mode: 'no-cors'
 						}).then(function () {
 							if (success) success.style.display = 'block';
 							if (btn) btn.style.display = 'none';
@@ -1091,6 +1089,15 @@
 							if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.textContent = '\uD83D\uDCC5 Confirm Appointment'; }
 							alert('Something went wrong. Please try again or call us directly.');
 						});
-</body >
+					});
+				});
+			</script>
 
-</html >
+			<!-- WhatsApp Floating Button -->
+			<a href="https://wa.me/916282327146?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Wings%20%26%20Wonders%20CDC." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+				<i class="fab fa-whatsapp"></i>
+			</a>
+
+</body>
+
+</html>
