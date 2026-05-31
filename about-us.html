@@ -1027,7 +1027,7 @@
 			var formData = new FormData(form);
 			var bodyParts = [];
 			formData.forEach(function(val, key){ bodyParts.push(encodeURIComponent(key)+'='+encodeURIComponent(val)); });
-			fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec', {
+			fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec?t=' + Date.now(), {
 				method: 'POST',
 				mode: 'no-cors',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
