@@ -169,7 +169,7 @@
 		<!-- BREADCRUMB
 			============================================= -->
 		<div id="breadcrumb" class="division"
-			style="background-image: url('images/full-shot-woman-helping-boy-exercise.jpg'); background-size: cover; background-position: center;">
+			style="background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url('images/banner-2.jpg'); background-size: cover; background-position: center;">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -178,13 +178,13 @@
 							<!-- Breadcrumb Nav -->
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="./">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">About Us</li>
+									<li class="breadcrumb-item"><a href="./" style="color:#fff;opacity:0.85;">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page" style="color:#fff;">About Us</li>
 								</ol>
 							</nav>
 
 							<!-- Title -->
-							<h4 class="h4-sm steelblue-color">About Us</h4>
+							<h4 class="h4-sm" style="color:#fff;">About Us</h4>
 
 						</div>
 					</div>
@@ -929,6 +929,10 @@
 			</div>
 
 			<style>
+				#breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+					color: rgba(255,255,255,0.7);
+				}
+
 				@keyframes apptFadeIn {
 					from {
 						opacity: 0;
