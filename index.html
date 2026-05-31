@@ -2292,7 +2292,7 @@
 				var succ  = document.getElementById('apptSuccess');
 				if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
 				if (succ)  succ.style.display = 'none';
-				if (form)  { form.reset(); var btn = form.querySelector('button[type=submit]'); if (btn) btn.style.display = ''; }
+				if (form)  { form.reset(); var btn = form.querySelector('button[type=submit]'); if (btn) { btn.style.display = ''; btn.disabled = false; btn.style.opacity = '1'; btn.textContent = '\uD83D\uDCC5 Confirm Appointment'; } }
 			}
 			document.addEventListener('DOMContentLoaded', function(){
 				var closeBtn = document.getElementById('closeApptModal');
@@ -2303,9 +2303,24 @@
 				if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeApptModal(); });
 				if (form) form.addEventListener('submit', function(e){
 					e.preventDefault();
-					if (success) success.style.display = 'block';
-					var btn = form.querySelector('button[type=submit]'); if (btn) btn.style.display = 'none';
-					setTimeout(closeApptModal, 3000);
+					var btn = form.querySelector('button[type=submit]');
+					if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; btn.textContent = 'Sending...'; }
+					var formData = new FormData(form);
+					var bodyParts = [];
+					formData.forEach(function(val, key){ bodyParts.push(encodeURIComponent(key)+'='+encodeURIComponent(val)); });
+					fetch('https://script.google.com/macros/s/AKfycbxmBZWfTQpliUEDcFBRgHW6C9oHC1708ySVu0c7vVK6SJFceZTj1OcPj6yJQMCZbC1p/exec', {
+						method: 'POST',
+						mode: 'no-cors',
+						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+						body: bodyParts.join('&')
+					}).then(function(){
+						if (success) success.style.display = 'block';
+						if (btn) btn.style.display = 'none';
+						setTimeout(closeApptModal, 3500);
+					}).catch(function(){
+						if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.textContent = '\uD83D\uDCC5 Confirm Appointment'; }
+						alert('Something went wrong. Please try again or call us directly.');
+					});
 				});
 			});
 		</script>
@@ -2336,38 +2351,6 @@
 
 		<script src="js/changer.js"></script>
 		<script defer src="js/styleswitch.js"></script>	
-
-		<!-- APPOINTMENT MODAL SCRIPT -->
-		<script>
-			function openApptModal(e) {
-				if (e) { e.preventDefault(); e.stopPropagation(); }
-				var modal = document.getElementById('apptModal');
-				if (modal) { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-				return false;
-			}
-			function closeApptModal() {
-				var modal = document.getElementById('apptModal');
-				var form  = document.getElementById('apptForm');
-				var succ  = document.getElementById('apptSuccess');
-				if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
-				if (succ)  succ.style.display = 'none';
-				if (form)  { form.reset(); var btn = form.querySelector('button[type=submit]'); if(btn) btn.style.display=''; }
-			}
-			document.addEventListener('DOMContentLoaded', function(){
-				var closeBtn = document.getElementById('closeApptModal');
-				var modal    = document.getElementById('apptModal');
-				var form     = document.getElementById('apptForm');
-				var success  = document.getElementById('apptSuccess');
-				if (closeBtn) closeBtn.addEventListener('click', closeApptModal);
-				if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeApptModal(); });
-				if (form) form.addEventListener('submit', function(e){
-					e.preventDefault();
-					if(success) success.style.display = 'block';
-					var btn = form.querySelector('button[type=submit]'); if(btn) btn.style.display = 'none';
-					setTimeout(closeApptModal, 3000);
-				});
-			});
-		</script>
 
 		<!-- WHATSAPP FLOATING BUTTON -->
 		<a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
