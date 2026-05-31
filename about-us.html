@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<!-- MedService - Medical & Medical Health Landing Page Template design by Jthemes -->
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
+
 <html lang="en">
-
-
-
-
-
-<!-- Mirrored from jthemes.net/themes/html/medservices/files/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 May 2026 11:08:58 GMT -->
 
 <head>
 
@@ -178,7 +168,7 @@
 
 		<!-- BREADCRUMB
 			============================================= -->
-		<div id="breadcrumb" class="division">
+		<div id="breadcrumb" class="division" style="background-image: url('images/full-shot-woman-helping-boy-exercise.jpg'); background-size: cover; background-position: center;">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -728,14 +718,13 @@
 							<h5 class="h5-xs">Working Hours</h5>
 
 							<!-- Working Hours -->
-							<p class="p-sm">Sunday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Monday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Tuesday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Wednesday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Thursday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Friday - <span>9:00 AM - 5:00 PM</span></p>
-							<p class="p-sm">Saturday - <span>9:00 AM - 5:00 PM</span></p>
-
+						<p class="p-sm">Monday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Tuesday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Wednesday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Thursday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Friday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Saturday - <span>9:00 AM - 5:00 PM</span></p>
+						<p class="p-sm">Sunday - <span>Closed</span></p>
 						</div>
 					</div>
 
@@ -1027,9 +1016,11 @@
 			var formData = new FormData(form);
 			var bodyParts = [];
 			formData.forEach(function(val, key){ bodyParts.push(encodeURIComponent(key)+'='+encodeURIComponent(val)); });
-			fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec?' + bodyParts.join('&') + '&t=' + Date.now(), {
-				method: 'GET',
-				mode: 'no-cors'
+			fetch('https://script.google.com/macros/s/AKfycbyzuLAuE_scDUV2VWoMWEtZoiTxPWr9mR1tshwpspGkf9UDwK4ZDOo8Rz_vElDhcYoeDg/exec?t=' + Date.now(), {
+				method: 'POST',
+				mode: 'no-cors',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: bodyParts.join('&')
 			}).then(function(){
 				if (success) success.style.display = 'block';
 				if (btn) btn.style.display = 'none';
