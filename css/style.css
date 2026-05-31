@@ -3328,6 +3328,30 @@ td.text-right {
   overflow: hidden;
 }
 
+/*------------------------------------------*/
+/*   Doctor Image — fixed-height box + zoom
+/*------------------------------------------*/
+
+#doctors-1 .doctor-1 .hover-overlay {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+#doctors-1 .doctor-1 .hover-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.45s ease;
+}
+
+#doctors-1 .doctor-1:hover .hover-overlay img {
+  transform: scale(1.08);
+}
+
 .doctor-2 {
   text-align: center;
   background-color: #fff;
