@@ -4765,10 +4765,10 @@ p.contact-notice {
 }
 
 .footer.bg-image {
-  background-image: url(../images/footer-bg.jpg);
+  background-image: linear-gradient(135deg, rgba(10, 28, 68, 0.93) 0%, rgba(15, 75, 130, 0.88) 50%, rgba(10, 110, 120, 0.90) 100%), url(../images/sky.jpg);
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center center;   
+  background-position: center center;
   background-size: cover;
 }
 
