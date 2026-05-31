@@ -256,19 +256,52 @@
 		/*	Statistic Counter
 		/*----------------------------------------------------*/
 	
-		$('.count-element').each(function () {
-			$(this).appear(function() {
-				$(this).prop('Counter',0).animate({
-					Counter: $(this).text()
-				}, {
-					duration: 4000,
-					easing: 'swing',
-					step: function (now) {
-						$(this).text(Math.ceil(now));
+		if ('IntersectionObserver' in window) {
+			var counterObserver = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						var $el = $(entry.target);
+						var target = parseInt($el.text(), 10);
+						$el.prop('Counter', 0).animate({
+							Counter: target
+						}, {
+							duration: 2500,
+							easing: 'swing',
+							step: function(now) {
+								$el.text(Math.ceil(now));
+							},
+							complete: function() {
+								$el.text(target);
+							}
+						});
+						observer.unobserve(entry.target);
 					}
 				});
-			},{accX: 0, accY: 0});
-		});
+			}, { threshold: 0.3, rootMargin: '0px 0px -30px 0px' });
+
+			$('.count-element').each(function() {
+				counterObserver.observe(this);
+			});
+		} else {
+			$('.count-element').each(function () {
+				$(this).appear(function() {
+					var $el = $(this);
+					var target = parseInt($el.text(), 10);
+					$el.prop('Counter', 0).animate({
+						Counter: target
+					}, {
+						duration: 2500,
+						easing: 'swing',
+						step: function (now) {
+							$el.text(Math.ceil(now));
+						},
+						complete: function() {
+							$el.text(target);
+						}
+					});
+				},{accX: 0, accY: 0});
+			});
+		}
 
 
 		/*----------------------------------------------------*/
