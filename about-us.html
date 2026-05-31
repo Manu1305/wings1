@@ -4,14 +4,13 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="author" content="Jthemes" />
-	<meta name="description" content="MedService - Medical & Medical Health Landing Page Template" />
-	<meta name="keywords"
-		content="Responsive, HTML5 Template, Jthemes, One Page, Landing, Medical, Health, Healthcare, Doctor, Clinic, Care, Hospital">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="Jthemes" />
+		<meta name="description" content="wings and wonders child development center" />
+		<meta name="keywords"
+			content="wings and wonders child development center, child development center, child development, child care, early childhood education, developmental support, speech therapy, occupational therapy, behavioral therapy, special education, play-based learning, inclusive environment" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- SITE TITLE -->
 	<title>Wings &amp; Wonders - Child Development Centre</title>
 
@@ -945,8 +944,10 @@
 					}
 				}
 
+				/* iOS momentum scrolling */
 				#apptModal {
 					-webkit-overflow-scrolling: touch;
+					overscroll-behavior: contain;
 				}
 
 				#apptForm .appt-grid {
@@ -955,32 +956,59 @@
 					gap: 16px;
 				}
 
+				/* Prevent iOS zoom on input focus (font-size must be >= 16px on mobile) */
+				@media (max-width: 767px) {
+					#apptForm input,
+					#apptForm select,
+					#apptForm textarea {
+						font-size: 16px !important;
+					}
+					#apptForm label {
+						font-size: 11px !important;
+					}
+				}
+
+				/* Tablet & large phone (540px – 767px): tighten padding, keep 2-col */
+				@media (max-width: 767px) and (min-width: 541px) {
+					#apptModal > div {
+						max-width: 96% !important;
+					}
+					#apptForm {
+						padding: 20px 20px 26px !important;
+					}
+					#apptModal > div > div:first-child {
+						padding: 20px 20px 18px !important;
+					}
+				}
+
+				/* Small phone (≤ 540px): single-column, full-width modal */
 				@media (max-width: 540px) {
 					#apptModal {
 						padding: 0 !important;
 						align-items: flex-start !important;
 					}
 
-					#apptModal>div {
+					#apptModal > div {
 						border-radius: 0 0 18px 18px !important;
 						width: 100% !important;
+						max-width: 100% !important;
 						margin: 0 !important;
 					}
 
-					#apptModal>div>div:first-child {
-						padding: 18px 16px 16px !important;
+					#apptModal > div > div:first-child {
+						padding: 16px 16px 14px !important;
 					}
 
-					#apptModal>div>div:first-child h4 {
+					#apptModal > div > div:first-child h4 {
 						font-size: 17px !important;
 					}
 
-					#apptModal>div>div:first-child p {
+					#apptModal > div > div:first-child p {
 						font-size: 12px !important;
 					}
 
 					#apptForm {
-						padding: 18px 16px 24px !important;
+						padding: 16px 14px 22px !important;
 					}
 
 					#apptForm .appt-grid {

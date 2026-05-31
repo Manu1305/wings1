@@ -2241,19 +2241,32 @@
 			}
 			#apptModal {
 				-webkit-overflow-scrolling: touch;
+				overscroll-behavior: contain;
 			}
 			#apptForm .appt-grid {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 16px;
 			}
+			/* Prevent iOS zoom on input focus */
+			@media (max-width: 767px) {
+				#apptForm input, #apptForm select, #apptForm textarea { font-size: 16px !important; }
+				#apptForm label { font-size: 11px !important; }
+			}
+			/* Tablet / large phone: tighten padding */
+			@media (max-width: 767px) and (min-width: 541px) {
+				#apptModal > div { max-width: 96% !important; }
+				#apptForm { padding: 20px 20px 26px !important; }
+				#apptModal > div > div:first-child { padding: 20px 20px 18px !important; }
+			}
+			/* Small phone: single-column, full-width */
 			@media (max-width: 540px) {
 				#apptModal { padding: 0 !important; align-items: flex-start !important; }
-				#apptModal > div { border-radius: 0 0 18px 18px !important; width: 100% !important; margin: 0 !important; }
-				#apptModal > div > div:first-child { padding: 18px 16px 16px !important; }
+				#apptModal > div { border-radius: 0 0 18px 18px !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+				#apptModal > div > div:first-child { padding: 16px 16px 14px !important; }
 				#apptModal > div > div:first-child h4 { font-size: 17px !important; }
 				#apptModal > div > div:first-child p { font-size: 12px !important; }
-				#apptForm { padding: 18px 16px 24px !important; }
+				#apptForm { padding: 16px 14px 22px !important; }
 				#apptForm .appt-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
 			}
 		</style>
