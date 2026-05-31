@@ -5741,7 +5741,13 @@ ul.terms-list li:last-child {
 }
 
 #scrollUp:hover {
-  background-color: rgba(0, 165, 200, 0.95);
+  background-color: rgba(74, 44, 143, 0.95);
+}
+
+/* Touch-device tap optimisation */
+#scrollUp {
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
 
 nav a#pull {  

@@ -96,24 +96,40 @@
 				$(scrollId+"-active").css({ 'position': 'absolute', 'top': o.topDistance+'px', 'width': '100%', 'border-top': '1px dotted '+o.activeOverlay, 'z-index': '2147483647' });
 			}
 
-			// Scroll function
-			$(window).on('scroll', function(){	
-				switch (o.animation) {
-					case "fade":
-						$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
-						break;
-					case "slide":
-						$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).slideDown(o.animationInSpeed) : $(scrollId).slideUp(o.animationOutSpeed) );
-						break;
-					default:
-						$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).show(0) : $(scrollId).hide(0) );
+			// Show while scrolling, hide 1.5s after scrolling stops
+			var scrollHideTimer = null;
+
+			function onScrolling() {
+				var scrolled = window.pageYOffset
+					|| document.documentElement.scrollTop
+					|| document.body.scrollTop
+					|| 0;
+
+				// Only show if scrolled past the top distance
+				if (scrolled > o.topDistance) {
+					$(scrollId).stop(true, true).fadeIn(o.animationInSpeed);
 				}
-			});
+
+				// Clear any existing hide timer and start a new one
+				clearTimeout(scrollHideTimer);
+				scrollHideTimer = setTimeout(function() {
+					$(scrollId).stop(true, true).fadeOut(o.animationOutSpeed);
+				}, 1500);
+			}
+
+			window.addEventListener('scroll', onScrolling, {passive: true});
+			document.addEventListener('touchmove', onScrolling, {passive: true});
+			document.addEventListener('touchend', onScrolling, {passive: true});
 
 			// To the top
-			$(scrollId).on('click', function(event){
-				$('html, body').animate({scrollTop:0}, o.topSpeed);
+			$(scrollId).on('click touchstart', function(event){
 				event.preventDefault();
+				event.stopPropagation();
+				if ('scrollBehavior' in document.documentElement.style) {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				} else {
+					$('html, body').animate({scrollTop: 0}, o.topSpeed);
+				}
 			});
 
 		};
