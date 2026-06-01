@@ -168,6 +168,29 @@
 
 
 		/*----------------------------------------------------*/
+		/*	Experts Rotator
+		/*----------------------------------------------------*/
+
+		var owl = $('.experts-holder');
+			owl.owlCarousel({
+				loop: true,
+				autoplay: true,
+				autoplayTimeout: 3500,
+				autoplayHoverPause: true,
+				smartSpeed: 800,
+				dots: true,
+				nav: false,
+				margin: 24,
+				responsive: {
+					0:    { items: 1 },
+					768:  { items: 2 },
+					992:  { items: 3 },
+					1200: { items: 4 }
+				}
+		});
+
+
+		/*----------------------------------------------------*/
 		/*	Portfolio Grid
 		/*----------------------------------------------------*/
 
