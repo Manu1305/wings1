@@ -27,6 +27,10 @@
 			var target = this.hash,
 				$target = jQuery(target);
 
+			if (!target || !$target.length) {
+				return false;
+			}
+
 			$('html, body').stop().animate({
 				'scrollTop': $target.offset().top - 60 // - 200px (nav-height)
 			}, 'slow', 'easeInSine', function () {
